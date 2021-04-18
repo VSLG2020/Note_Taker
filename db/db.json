@@ -1,0 +1,36 @@
+{
+    "notes": [
+      {
+        "id": "0",
+        "title": "Groceries",
+        "text": ["apples", "bread","fresca"]
+      },
+      {
+        "id": "1",
+        "title": "To-Do",
+        "text": ["pay Water bill", "vaccum living room"]
+      },
+      {
+        "id": "2",
+        "title": "Needs",
+        "text": ["tanning", "manicure"]
+      },
+      {
+        "id": "3",
+        "title": "car",
+        "text": ["renew tags", "new windsheild wipers", "oil change"]
+      },
+      {
+        "id": "4",
+        "title": "Random",
+        "text": ["pass code: 4321", "Quote: carpe diem sua sponte"]
+      },
+      {
+        "id": "5",
+        "title": "Dogs",
+        "text": ["park on 24th and 5th", "new ball", "schedule appt for Tiger"]
+      }
+     
+    ]
+  }
+
