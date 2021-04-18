@@ -1,6 +1,6 @@
-const express = require('express');
 const fs = require('fs');
-const { notes } = require('./db/notes.json');
+const { notes } = require('./db/notes');
+const express = require('express');
 const path = require('path')
 
 const app = express();
@@ -19,11 +19,9 @@ function createNote(body, notesArray) {
   const note = body;
   notesArray.push(note);
   fs.writeFileSync(
-    path.join(__dirname, './public/notes.json'),
-    //JSON.stringify({notesArray}, null, 2)
+    path.join(__dirname, './db/notes.json'),
     JSON.stringify({ notes: notesArray }, null, 2)
   );
-
   return note;
 }
 
@@ -35,23 +33,11 @@ function findById(id, notesArray) {
 
 //==filter==//
 function filterByQuery(query, notesArray) {
-  // const textArray = [];
-  const filteredResults = notesArray;
+  
+  let filteredResults = notesArray;
   if (query.title) {
     filteredResults = filteredResults.filter(notes => notes.title === query.title);
   }
-  // if (query.text) {
-  //     if (typeof query.text === 'string') {
-  //       textArray = [query.text];
-  //     } else {
-  //       textArray = query.text;
-  //     }
-  //     textArray.forEach(listItem => {
-  //       filteredResults = filteredResults.filter(
-  //         notes => notes.text.indexOf(listItem) !== -1
-  //       );
-  //     });
-  //   }
   if (query.text) {
     filteredResults = filteredResults.filter(notes => notes.text === query.text);
   }
@@ -60,16 +46,11 @@ function filterByQuery(query, notesArray) {
 
 // //==validate==//
 function validate(note) {
-  // if (!note.id || typeof note.id !== 'number') {
-  //     return false;
-  //   }
   if (!note.title || typeof note.title !== 'string') {
     return false;
   }
   if (!note.text || typeof note.text !== 'string') {
     return false;
-    // if (!note.text || !Array.isArray(note.text)) {
-    //     return false;
   }
   return true;
 }
@@ -95,7 +76,7 @@ app.get('/notes', (req, res) => {
 
 //api get//
 app.get('/api/notes', (req, res) => {
-  const results = notes;
+  let results = notes;
   if (req.query) {
     results = filterByQuery(req.query, results);
   }
@@ -105,14 +86,14 @@ app.get('/api/notes', (req, res) => {
 // create a get route that returns any given specific note
 app.get('/api/notes/:id', (req, res) => {
   const result = findById(req.params.id, notes);
-  console.log(result);
-  if (result) {
+  //console.log(result);
+ // if (result) {
     res.json(result);
-  } else {
-    res.send(404);
-  }
+  // } else {
+  //   res.send(404);
+  // }
 
-  return res.json(result);
+  // return res.json(result);
 });
 
 

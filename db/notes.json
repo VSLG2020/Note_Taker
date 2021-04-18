@@ -1,36 +1,34 @@
 {
-    "notes": [
-      {
-        "id": "1",
-        "title": "Groceries",
-        "text": "'apples'"
-      },
-      {
-        "id": "2",
-        "title": "To-Do",
-        "text": "vaccum living room'"
-      },
-      {
-        "id": "3",
-        "title": "Needs",
-        "text": "manicure'"
-      },
-      {
-        "id": "4",
-        "title": "car",
-        "text": "oil change'"
-      },
-      {
-        "id": "5",
-        "title": "Random",
-        "text": "Quote: carpe diem sua sponte"
-      },
-      {
-        "id": "6",
-        "title": "Dogs",
-        "text": "schedule appt for Tiger'"
-      }
-     
-    ]
-  }
-
+  "notes": [
+    {
+      "id": "1",
+      "title": "Groceries",
+      "text": "apples"
+    },
+    {
+      "id": "2",
+      "title": "To-Do",
+      "text": "vaccum living room"
+    },
+    {
+      "id": "3",
+      "title": "Needs",
+      "text": "manicure"
+    },
+    {
+      "id": "4",
+      "title": "car",
+      "text": "oil change"
+    },
+    {
+      "id": "5",
+      "title": "Random",
+      "text": "Quote: carpe diem sua sponte"
+    },
+    {
+      "id": "6",
+      "title": "Dogs",
+      "text": "schedule appt for Tiger"
+    }
+  ]
+}
