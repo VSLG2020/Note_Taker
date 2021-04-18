@@ -38,36 +38,41 @@ function findById(id, notesArray) {
 
 //==filter==//
 function filterByQuery(query, notesArray) {
-    const textArray = [];
+   // const textArray = [];
     const filteredResults = notesArray;
     if (query.title) {
         filteredResults = filteredResults.filter(notes => notes.title === query.title);
     }
+    // if (query.text) {
+    //     if (typeof query.text === 'string') {
+    //       textArray = [query.text];
+    //     } else {
+    //       textArray = query.text;
+    //     }
+    //     textArray.forEach(listItem => {
+    //       filteredResults = filteredResults.filter(
+    //         notes => notes.text.indexOf(listItem) !== -1
+    //       );
+    //     });
+    //   }
     if (query.text) {
-        if (typeof query.text === 'string') {
-          textArray = [query.text];
-        } else {
-          textArray = query.text;
-        }
-        textArray.forEach(listItem => {
-          filteredResults = filteredResults.filter(
-            notes => notes.text.indexOf(listItem) !== -1
-          );
-        });
-      }
+      filteredResults = filteredResults.filter(notes => notes.text === query.text);
+  }
     return filteredResults;
 }
 
 // //==validate==//
 function validate(note) {
-    if (!note.id || typeof note.id !== 'number') {
-        return false;
-      }
+    // if (!note.id || typeof note.id !== 'number') {
+    //     return false;
+    //   }
     if (!note.title || typeof note.title !== 'string') {
         return false;
     }
-    if (!note.text || !Array.isArray(note.text)) {
-        return false;
+    if (!note.text || typeof note.text !== 'string') {
+      return false;
+    // if (!note.text || !Array.isArray(note.text)) {
+    //     return false;
     }
     return true;
 }
