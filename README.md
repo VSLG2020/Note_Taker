@@ -22,7 +22,11 @@
 ### I click on the Write icon in the navigation at the top of the page
     it is presented with empty fields to enter a new note title and the note’s text in the right-hand column
 
-    ![Connected Back End](public\assets\screenshots\insomniaDB.jpg)
-    ![Interactive Front End](public\assets\screenshots\frontEndNotes.jpg)
+## Installation:
+     Fork off Repo, do NPM INSTALL, then Run node server in command line.
 
-    [Heroku](https://infinite-retreat-25229.herokuapp.com/)
+![image](public\assets\screenshots\insomniaDB.jpg)
+
+![image](public\assets\screenshots\frontEndNotes.jpg)
+
+    Heroku: https://infinite-retreat-25229.herokuapp.com/
