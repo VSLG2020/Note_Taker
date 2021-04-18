@@ -3,22 +3,22 @@
     {
       "id": "1",
       "title": "Groceries",
-      "text": "apples"
+      "text": "apples, tomatoes, celery, fresca, chicken, tumeric"
     },
     {
       "id": "2",
-      "title": "To-Do",
-      "text": "vaccum living room"
+      "title": "Chores To-Do",
+      "text": "vaccum living room, load dishwasher, steam dress"
     },
     {
       "id": "3",
       "title": "Needs",
-      "text": "manicure"
+      "text": "manicure, tan, run 1 mile"
     },
     {
       "id": "4",
       "title": "car",
-      "text": "oil change"
+      "text": "oil change, new windsheid wipers, take in for service"
     },
     {
       "id": "5",
@@ -28,7 +28,7 @@
     {
       "id": "6",
       "title": "Dogs",
-      "text": "schedule appt for Tiger"
+      "text": "schedule appt for Tiger, schedule groomers, buy more flea spray"
     }
   ]
 }
