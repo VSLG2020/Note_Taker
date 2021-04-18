@@ -16,36 +16,46 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public')); //Should allow us to get CSS styles up.
 
+//create functions for create, findbyId, filter and validate notes===============
+
+
+
 
 
 // Routes
 // ===========================================================
-//send route to return to index.html
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/index.html'));
-});
 
-
+////notes routes/////
 app.get('/api/notes', (req, res) => {
-    res.json(notes);
+    let results = notes;
+    if (req.query) {
+        results = filterByQuery(req.query, results);
+    }
+    res.json(results);
 });
 
-// create a route that returns any given specific note
+//send route to return to notes.html
+app.get('/notes', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/notes.html'))
+});
+
+// create a get route that returns any given specific note
 app.get('/api/notes/:id', (req, res) => {
     const chosen = req.params.notes;
     console.log(chosen);
     // Iterate through the notes' routeNames to check if it matches `req.params.Notes`
     for (let i = 0; i < notes.length; i++) {
         if (chosen === notes[i].routeName) {
-          return res.json(notes[i]);
+            return res.json(notes[i]);
         }
-      }
-    
-      return res.json(false);
-    });
-    
+    }
+
+    return res.json(false);
+});
 
 
+
+//post note routes
 
 app.post('/api/notes', (req, res) => {
     const newNotes = req.body;
@@ -57,7 +67,11 @@ app.post('/api/notes', (req, res) => {
     res.json(newNotes);
 });
 
-
+//send route to return to index.html
+//root of the server
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'));
+});
 
 // Listener
 // ===========================================================
