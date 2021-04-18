@@ -1,14 +1,9 @@
-const express = require('express');
 const fs = require('fs');
 const { notes } = require('./db/notes.json');
-const path = require('path')
-
-// Dependencies
-// ===========================================================
-
-
+const express = require('express');
+const PORT = process.env.PORT || 3001;
 const app = express();
-const PORT = 3001;
+
 
 // Sets up the Express app to handle data parsing
 //this is middleware
@@ -17,6 +12,38 @@ app.use(express.json());
 app.use(express.static('public')); //Should allow us to get CSS styles up.
 
 //====create functions for createNote, findbyId, filterByQuery and validate notes
+
+//==filter==//
+function filterByQuery(query, notesArray) {
+  // const textArray = [];
+   const filteredResults = notesArray;
+   if (query.title) {
+       filteredResults = filteredResults.filter(notes => notes.title === query.title);
+   }
+   // if (query.text) {
+   //     if (typeof query.text === 'string') {
+   //       textArray = [query.text];
+   //     } else {
+   //       textArray = query.text;
+   //     }
+   //     textArray.forEach(listItem => {
+   //       filteredResults = filteredResults.filter(
+   //         notes => notes.text.indexOf(listItem) !== -1
+   //       );
+   //     });
+   //   }
+   if (query.text) {
+     filteredResults = filteredResults.filter(notes => notes.text === query.text);
+ }
+   return filteredResults;
+}
+
+//===findById==//
+function findById(id, notesArray) {
+  const result = notesArray.filter(notes => notes.id === id)[0];
+  return result;
+}
+
 //==createNote==//
 function createNote(body, notesArray){
     const note = body;
@@ -28,37 +55,6 @@ function createNote(body, notesArray){
     );
 
     return note;
-}
-
-//===findById==//
-function findById(id, notesArray) {
-    const result = notesArray.filter(notes => notes.id === id)[0];
-    return result;
-}
-
-//==filter==//
-function filterByQuery(query, notesArray) {
-   // const textArray = [];
-    const filteredResults = notesArray;
-    if (query.title) {
-        filteredResults = filteredResults.filter(notes => notes.title === query.title);
-    }
-    // if (query.text) {
-    //     if (typeof query.text === 'string') {
-    //       textArray = [query.text];
-    //     } else {
-    //       textArray = query.text;
-    //     }
-    //     textArray.forEach(listItem => {
-    //       filteredResults = filteredResults.filter(
-    //         notes => notes.text.indexOf(listItem) !== -1
-    //       );
-    //     });
-    //   }
-    if (query.text) {
-      filteredResults = filteredResults.filter(notes => notes.text === query.text);
-  }
-    return filteredResults;
 }
 
 // //==validate==//
@@ -80,13 +76,15 @@ function validate(note) {
 
 //////////////////// Routes///////////////////////
 
-//===html routes==//
+//// ===html routes==//
 
-//root of the server
+//// root of the server
+
 // router.get('*', (req, res) => {
 //     res.sendFile(path.join(__dirname, './public/index.html'));
 //   });
   
+
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, './public/index.html'));
@@ -113,12 +111,13 @@ app.get('/api/notes', (req, res) => {
 app.get('/api/notes/:id', (req, res) => {
     const result = findById(req.params.id, notes);
     console.log(result);
-    if (result) {
-        res.json(result);
-      } else {
-        res.send(404);
-      }
-    
+   res.json(result);
+    // if (result) {
+    //     res.json(result);
+    //   } else {
+    //     res.send(404);
+    //   }
+    ////or/////
     // Iterate through the notes' routeNames to check if it matches `req.params.Notes`
     // for (let i = 0; i < notes.length; i++) {
     //     if (result === notes[i].routeName) {
@@ -126,7 +125,7 @@ app.get('/api/notes/:id', (req, res) => {
     //     }
     // }
 
-    return res.json(result);
+   // return res.json(result);
 });
 
 
@@ -135,7 +134,7 @@ app.get('/api/notes/:id', (req, res) => {
 
 app.post('/api/notes', (req, res) => {
     req.body.id = notes.length.toString();
-    console.log(req.body);
+   // console.log(req.body);
     if (!validate(req.body)) {
       res.status(400).send('The note is not properly formatted.');
     } else {

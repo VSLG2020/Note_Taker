@@ -3,22 +3,22 @@
       {
         "id": "1",
         "title": "Groceries",
-        "text": "'apples', 'bread','fresca'"
+        "text": "'apples'"
       },
       {
         "id": "2",
         "title": "To-Do",
-        "text": "'pay Water bill', 'vaccum living room'"
+        "text": "vaccum living room'"
       },
       {
         "id": "3",
         "title": "Needs",
-        "text": "'tanning', 'manicure'"
+        "text": "manicure'"
       },
       {
         "id": "4",
         "title": "car",
-        "text": "'renew tags', 'new windsheild wipers', 'oil change'"
+        "text": "oil change'"
       },
       {
         "id": "5",
@@ -28,7 +28,7 @@
       {
         "id": "6",
         "title": "Dogs",
-        "text": "'park on 24th and 5th', 'new ball', 'schedule appt for Tiger'"
+        "text": "schedule appt for Tiger'"
       }
      
     ]
